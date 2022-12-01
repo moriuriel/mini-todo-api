@@ -11,10 +11,12 @@
     <None Remove="MongoDB.Driver" />
     <None Remove="Database\" />
     <None Remove="Microsoft.Extensions.Options" />
+    <None Remove="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entity\" />
     <Folder Include="Database\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.18.0" />

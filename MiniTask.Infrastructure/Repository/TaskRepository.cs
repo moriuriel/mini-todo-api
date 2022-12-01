@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MiniTask.Domain.Database;
 using MiniTask.Domain.Entity;
+using MiniTask.Domain.Repository;
 using MongoDB.Driver;
 
 namespace MiniTask.Infrastructure.Repository
 {
-	public class TaskRepository
+	public class TaskRepository : ITaskRepository
 	{
 		private readonly IMongoCollection<TaskEntity> _task;
 
