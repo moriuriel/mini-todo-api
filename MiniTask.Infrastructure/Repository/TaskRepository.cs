@@ -24,6 +24,8 @@ namespace MiniTask.Infrastructure.Repository
 
 		public async Task<List<TaskEntity>> FindAll() => await _task.Find(_ => true).ToListAsync();
 
+		public async Task<TaskEntity> FindByID(string id) => await _task.Find(t => t.Id == id).FirstOrDefaultAsync();
+
 		public async Task<TaskEntity> Create(TaskEntity task)
 		{
 			await _task.InsertOneAsync(task);

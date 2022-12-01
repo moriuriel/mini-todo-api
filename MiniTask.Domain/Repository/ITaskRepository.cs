@@ -7,6 +7,7 @@ namespace MiniTask.Domain.Repository
 	{
         Task<List<TaskEntity>> FindAll();
         Task<TaskEntity> Create(TaskEntity task);
+        Task<TaskEntity> FindByID(string id);
     }
 }
 

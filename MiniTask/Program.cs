@@ -11,7 +11,6 @@ builder.Services.AddSingleton<TaskRepository>();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
-
 app.MapGet("/v1/tasks", async (TaskRepository repo) => await repo.FindAll());
 app.MapPost("/v1/tasks", async (TaskRepository repo, TaskEntity task) =>
 {
@@ -19,6 +18,10 @@ app.MapPost("/v1/tasks", async (TaskRepository repo, TaskEntity task) =>
 
     return Results.Created("/v1/tasks", newTask);
 });
-
+app.MapGet("/v1/tasks/{id}", async (TaskRepository repo, string id) =>
+{
+    var task = await repo.FindByID(id);
+    return task is null ? Results.NotFound() : Results.Ok(task);
+});
 app.Run();
 
