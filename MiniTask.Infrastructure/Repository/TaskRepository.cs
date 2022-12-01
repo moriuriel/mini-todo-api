@@ -1,4 +1,5 @@
 ﻿
+using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MiniTask.Domain.Database;
 using MiniTask.Domain.Entity;
@@ -21,6 +22,13 @@ namespace MiniTask.Infrastructure.Repository
 		}
 
 		public async Task<List<TaskEntity>> FindAll() => await _task.Find(_ => true).ToListAsync();
+
+		public async Task<TaskEntity> Create(TaskEntity task)
+		{
+			await _task.InsertOneAsync(task);
+			return task;
+		}
+    
 	}
 }
 
